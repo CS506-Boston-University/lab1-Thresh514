@@ -9,6 +9,7 @@ class X:
         # TODO: Implement evaluation for variable X
         # Should return an Int object with the given x_value
         return Int(x_value)
+    
 
     def simplify(self):
         # TODO (Optional Exercise): Implement simplification
@@ -27,6 +28,7 @@ class Int:
         # TODO: Implement evaluation for integer constant
         # Should return an Int object with the stored integer value
         return Int(self.i)
+    
 
     def simplify(self):
         # TODO (Optional Exercise): Implement simplification
@@ -76,6 +78,7 @@ class Mul:
         val1 = self.p1.evaluate(x_value)
         val2 = self.p2.evaluate(x_value)
         return Int(val1.i * val2.i)
+    
 
     def simplify(self):
         # TODO (Optional Exercise): Implement simplification
@@ -101,13 +104,13 @@ class Sub:
         val1 = self.p1.evaluate(x_value)
         val2 = self.p2.evaluate(x_value)
         return Int(val1.i - val2.i)
+    
 
     def simplify(self):
         # TODO (Optional Exercise): Implement simplification
         # Examples: X - 0 -> X, 5 - 3 -> 2
         # Hint: Simplify operands first, then apply simplification rules
         return Sub(self.p1.simplify(), self.p2.simplify())
-
 
 class Div:
     def __init__(self, p1, p2):
@@ -132,13 +135,13 @@ class Div:
         val1 = self.p1.evaluate(x_value)
         val2 = self.p2.evaluate(x_value)
         return Int(val1.i // val2.i)
+    
 
     def simplify(self):
         # TODO (Optional Exercise): Implement simplification
         # Examples: X / 1 -> X, 6 / 2 -> 3
         # Hint: Simplify operands first, then apply simplification rules
         return Div(self.p1.simplify(), self.p2.simplify())
-
 
 # Original polynomial example
 poly = Add(Add(Int(4), Int(3)), Add(X(), Mul(Int(1), Add(Mul(X(), X()), Int(1)))))
